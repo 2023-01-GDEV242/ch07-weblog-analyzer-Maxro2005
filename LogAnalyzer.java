@@ -96,4 +96,23 @@ public class LogAnalyzer
         }
         return busiestHour;
     }
+    
+    /**
+     * Returns the quietest hour of the year.
+     * @return the quietest hour
+     */
+    public int quietestHour()
+    {
+        int quietestHour = 0;
+        int leastAccesses = hourCounts[0];
+        for (int hour = 1; hour < hourCounts.length; hour ++)
+        {
+            if (hourCounts[hour] < leastAccesses)
+            {
+                quietestHour = hour;
+                leastAccesses = hourCounts[hour];
+            }
+        }
+        return quietestHour;
+    }
 }
