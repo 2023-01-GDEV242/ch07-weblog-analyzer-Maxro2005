@@ -115,4 +115,36 @@ public class LogAnalyzer
         }
         return quietestHour;
     }
+    
+    /**
+     * Finds which two-hour period is the busiest.
+     * @return the first hour of the period
+     */
+    public int busiestTwoHour()
+    {
+        int busiestTwoHour = 0;
+        int mostAccesses = 0;
+        for (int hour = 0; hour < hourCounts.length; hour ++)
+        {
+            if (hour == 23)
+            {
+                if ((hourCounts[23] + hourCounts[0]) > mostAccesses)
+                {
+                    busiestTwoHour = 23;
+                    mostAccesses = hourCounts[23] + hourCounts[0];
+                }
+            }
+            else
+            {
+                if ((hourCounts[hour] + hourCounts[hour + 1])
+                        > mostAccesses)
+                {
+                    busiestTwoHour = hour;
+                    mostAccesses = hourCounts[hour]
+                                    + hourCounts[hour + 1];
+                }
+            }
+        }
+        return busiestTwoHour;
+    }
 }
