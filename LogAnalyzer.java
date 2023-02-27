@@ -65,4 +65,16 @@ public class LogAnalyzer
     {
         reader.printData();
     }
+    
+    /**
+     * Counts the total number of accesses recorded in the log file.
+     * @return the total number of accesses
+     */
+    public int numberOfAccesses()
+    {
+        int total = 0;
+        for (int numAccesses : hourCounts)
+            total += numAccesses;
+        return total;
+    }
 }
