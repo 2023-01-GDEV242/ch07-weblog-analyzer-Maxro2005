@@ -77,4 +77,23 @@ public class LogAnalyzer
             total += numAccesses;
         return total;
     }
+    
+    /**
+     * Returns the busiest hour of the year.
+     * @return the busiest hour
+     */
+    public int busiestHour()
+    {
+        int busiestHour = 0;
+        int mostAccesses = 0;
+        for (int hour = 0; hour < hourCounts.length; hour ++)
+        {
+            if (hourCounts[hour] > mostAccesses)
+            {
+                busiestHour = hour;
+                mostAccesses = hourCounts[hour];
+            }
+        }
+        return busiestHour;
+    }
 }
