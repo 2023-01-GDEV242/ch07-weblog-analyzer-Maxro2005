@@ -254,4 +254,55 @@ public class LogAnalyzer
     {
         printMonthlyCounts();
     }
+    
+    /**
+     * Returns the quietest month of the year.
+     * @return the quietest month
+     */
+    public int quietestMonth()
+    {
+        int quietestMonth = 1;
+        int leastAccesses = monthCounts[1];
+        for (int month = 2; month < monthCounts.length; month ++)
+        {
+            if (monthCounts[month] < leastAccesses)
+            {
+                quietestMonth = month;
+                leastAccesses = monthCounts[month];
+            }
+        }
+        return quietestMonth;
+    }
+    
+    /**
+     * Returns the busiest month of the year.
+     * @return the busiest month
+     */
+    public int busiestMonth()
+    {
+        int busiestMonth = 0;
+        int mostAccesses = 0;
+        for (int month = 1; month < monthCounts.length; month ++)
+        {
+            if (monthCounts[month] > mostAccesses)
+            {
+                busiestMonth = month;
+                mostAccesses = monthCounts[month];
+            }
+        }
+        return busiestMonth;
+    }
+    
+    /**
+     * Returns the average number of accesses per month (28-day period).
+     * @return the average
+     */
+    public double averageAccessesPerMonth()
+    {
+        int total = 0;
+        for (int numAccesses : monthCounts)
+            total += numAccesses;
+        double average = (total / 8.0) / (monthCounts.length - 1);
+        return average;
+    }
 }
